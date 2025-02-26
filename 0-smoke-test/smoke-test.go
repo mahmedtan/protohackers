@@ -6,7 +6,7 @@ import (
 
 func handleConnection(conn net.Conn) {
 
-	d := make([]byte, 1024)
+	d := make([]byte, 1024*1000)
 
 	n, _ := conn.Read(d)
 
