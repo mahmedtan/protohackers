@@ -1,6 +1,8 @@
 package main
 
 import (
+	"fmt"
+	"io"
 	"net"
 )
 
@@ -10,13 +12,20 @@ func handleConnection(conn net.Conn) {
 
 	d := make([]byte, 1024*1000)
 
-	n, e := conn.Read(d)
+	n, err := conn.Read(d)
 
-	if e != nil {
+	if err != nil {
+		if err != io.EOF {
+			fmt.Println("Read error:", err)
+		}
 		return
 	}
 
-	conn.Write(d[:n])
+	_, err2 := conn.Write(d[:n])
+
+	if err2 != nil {
+		fmt.Println("Write error:", err)
+	}
 
 }
 
