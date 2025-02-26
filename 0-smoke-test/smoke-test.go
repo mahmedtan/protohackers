@@ -6,13 +6,17 @@ import (
 
 func handleConnection(conn net.Conn) {
 
+	defer conn.Close()
+
 	d := make([]byte, 1024*1000)
 
-	n, _ := conn.Read(d)
+	n, e := conn.Read(d)
+
+	if e != nil {
+		return
+	}
 
 	conn.Write(d[:n])
-
-	conn.Close()
 
 }
 
