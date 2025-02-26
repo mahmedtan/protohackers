@@ -1,27 +1,18 @@
 package main
 
 import (
-	"fmt"
 	"net"
 )
 
 func handleConnection(conn net.Conn) {
 
-	buff := make([]byte, 1024)
-	for {
-		_, e := conn.Read(buff)
+	d := make([]byte, 1024)
 
-		if e != nil {
-			fmt.Println("CONN RESET")
-			return
-		}
+	n, _ := conn.Read(d)
 
-		conn.Write(buff)
+	conn.Write(d[:n])
 
-		conn.Close()
-		return
-
-	}
+	conn.Close()
 
 }
 
