@@ -1,1 +1,41 @@
+
+# Binaries and build artifacts
+*.exe
+*.out
+*.so
+*.dll
+*.dylib
+*.a
+*.o
 **/tmp/
+
+
+# Go modules and dependencies
+vendor/
+go.sum
+go.work
+go.work.sum
+
+# Compiled Go files
+*.test
+*.coverprofile
+*.cover.out
+
+# Logs and temporary files
+*.log
+*.tmp
+*.swp
+*.swo
+
+# IDE/editor files
+.vscode/
+.idea/
+*.iml
+
+# macOS and system files
+.DS_Store
+Thumbs.db
+
+# Coverage and debug
+coverage.out
+*.prof
