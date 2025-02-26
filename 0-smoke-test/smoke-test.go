@@ -9,7 +9,6 @@ func handleConnection(conn net.Conn) {
 
 	buff := make([]byte, 1024)
 	for {
-
 		_, e := conn.Read(buff)
 
 		if e != nil {
@@ -19,12 +18,15 @@ func handleConnection(conn net.Conn) {
 
 		conn.Write(buff)
 
+		conn.Close()
+		return
+
 	}
 
 }
 
 func main() {
-	listener, _ := net.Listen("tcp", ":8000")
+	listener, _ := net.Listen("tcp", ":7")
 
 	defer listener.Close()
 
